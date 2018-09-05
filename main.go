@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/kataras/iris"
+	"os"
 	"test-project/internal/db"
 	"test-project/web"
 )
@@ -27,10 +28,10 @@ func main() {
 }
 
 func getConnectionArguments() string {
-	dbArgs := "host=ec2-46-137-117-43.eu-west-1.compute.amazonaws.com "
-	dbArgs += "port=5432 "
-	dbArgs += "user=znmqbotyalubwj "
-	dbArgs += "dbname=d1japsoqvsc0e1 "
-	dbArgs += "password=b38e7983d1c697894999432b3b5b6808a4af858eef28d9dc787f558a60fd455f"
+	dbArgs := "host=" + os.Getenv("pgHost")
+	dbArgs += "port=" + os.Getenv("pgPort")
+	dbArgs += "user=" + os.Getenv("pgUser")
+	dbArgs += "dbname=" + os.Getenv("pgDbName")
+	dbArgs += "password=" + os.Getenv("pgPassword")
 	return dbArgs
 }
