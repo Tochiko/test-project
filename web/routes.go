@@ -1,6 +1,7 @@
 package web
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/kataras/iris"
 	"strconv"
@@ -19,6 +20,21 @@ func RegistryRoutes(app *iris.Application) {
 			content = append(content, iris.Map{"idOne": entity.IdOne, "idTwo": entity.IdTwo, "value": entity.Value})
 		}
 		ctx.JSON(content)
+	})
+
+	/*
+		Test marshalling struct and send with response writer
+	*/
+	app.Get("entities-second-writer-test", func(ctx iris.Context) {
+		entities := internal.FindEntitiesSecond()
+		content, err := json.Marshal(entities)
+		if err != nil {
+			ctx.StatusCode(500)
+			ctx.JSON(iris.Map{"error": "Internal Server Error"})
+		} else {
+			ctx.ContentType("application/json")
+			ctx.Write(content)
+		}
 	})
 
 	app.Get("/entities-first", func(ctx iris.Context) {
