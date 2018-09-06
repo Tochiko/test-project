@@ -12,11 +12,11 @@ func (m *EntitySecond) TableName() string {
 }
 
 type NestedEntitySecond struct {
-	IdOneChart int `gorm:"primary_key"`
-	IdTwoChart int `gorm:"primary_key"`
-	IdThree    int `gorm:"primary_key"`
-	ValueOne   float64
-	ValueTwo   float64
+	IdOneSecond int `gorm:"primary_key"`
+	IdTwoSecond int `gorm:"primary_key"`
+	IdThree     int `gorm:"primary_key"`
+	ValueOne    float64
+	ValueTwo    float64
 }
 
 func (mp *NestedEntitySecond) TableName() string {

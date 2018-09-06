@@ -1,7 +1,9 @@
 package web
 
 import (
+	"fmt"
 	"github.com/kataras/iris"
+	"strconv"
 	"test-project/internal/db"
 )
 
@@ -27,4 +29,35 @@ func RegistryRoutes(app *iris.Application) {
 		}
 		ctx.JSON(content)
 	})
+
+	app.Get("/entities-second/{idOne}/{idTwo}", func(ctx iris.Context) {
+		idOne, err := strconv.Atoi(ctx.Params().Get("idOne"))
+		if err != nil {
+			fmt.Println(err)
+		}
+		idTwo, err := strconv.Atoi(ctx.Params().Get("idTwo"))
+		if err != nil {
+			fmt.Println(err)
+		}
+		entity := internal.GetEntitySecond(idOne, idTwo)
+		ctx.JSON(iris.Map{"idOne": entity.IdOne, "idTwo": entity.IdTwo, "value": entity.Value})
+	})
+
+	app.Get("/entities-second/{idOne}/{idTwo}/nestedEntities", func(ctx iris.Context) {
+		idOne, err := strconv.Atoi(ctx.Params().Get("idOne"))
+		if err != nil {
+			fmt.Println(err)
+		}
+		idTwo, err := strconv.Atoi(ctx.Params().Get("idTwo"))
+		if err != nil {
+			fmt.Println(err)
+		}
+		nestedEntities := internal.FindNestedEntitiesSecond(idOne, idTwo)
+		var content []iris.Map
+		for _, nestedEntity := range nestedEntities {
+			content = append(content, iris.Map{"id": nestedEntity.IdThree, "valueOne": nestedEntity.ValueOne})
+		}
+		ctx.JSON(content)
+	})
+
 }
