@@ -469,6 +469,30 @@
 			"path": "gopkg.in/yaml.v2",
 			"revision": "44674201c83b18548b26bcf06e63e491b26dea39",
 			"revisionTime": "2018-08-22T23:46:58Z"
+		},
+		{
+			"checksumSHA1": "j0Xqv0i9bXyzXLCR8XGkFYJ+lOg=",
+			"path": "test-project",
+			"revision": "9ff47b28dff0ca97909c7c4f5016623279da8524",
+			"revisionTime": "2018-09-09T09:33:08Z"
+		},
+		{
+			"checksumSHA1": "pN7psHGviLv4wTTbbLeE7EA6mC8=",
+			"path": "test-project/internal/db",
+			"revision": "9ff47b28dff0ca97909c7c4f5016623279da8524",
+			"revisionTime": "2018-09-09T09:33:08Z"
+		},
+		{
+			"checksumSHA1": "rAlXo2RUx+jp3hRQv40OQ1F3YYU=",
+			"path": "test-project/internal/models",
+			"revision": "9ff47b28dff0ca97909c7c4f5016623279da8524",
+			"revisionTime": "2018-09-09T09:33:08Z"
+		},
+		{
+			"checksumSHA1": "iuvv15RFMJAgIq5S88ayxtPdQDI=",
+			"path": "test-project/web",
+			"revision": "9ff47b28dff0ca97909c7c4f5016623279da8524",
+			"revisionTime": "2018-09-09T09:33:08Z"
 		}
 	],
 	"rootPath": "test-project"
