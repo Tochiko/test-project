@@ -23,6 +23,6 @@ func main() {
 
 	app = iris.New()
 	web.RegistryRoutes(app)
-	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
+	app.Run(iris.Addr(":"+os.Getenv("PORT")), iris.WithoutServerError(iris.ErrServerClosed))
 
 }
