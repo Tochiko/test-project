@@ -14,7 +14,7 @@ var err error
 var app *iris.Application
 
 func main() {
-	db, _ = gorm.Open("postgres", os.Getenv("DATABASE_URL"))
+	db, _ = gorm.Open("postgres", os.Getenv("DB_URL"))
 	if err != nil {
 		panic("failed to connect data base!")
 	}
