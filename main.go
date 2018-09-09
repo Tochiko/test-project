@@ -14,7 +14,7 @@ var err error
 var app *iris.Application
 
 func main() {
-	db, _ = gorm.Open("postgres", getConnectionArguments())
+	db, _ = gorm.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		panic("failed to connect data base!")
 	}
@@ -25,13 +25,4 @@ func main() {
 	web.RegistryRoutes(app)
 	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
 
-}
-
-func getConnectionArguments() string {
-	dbArgs := "host=" + os.Getenv("pgHost")
-	dbArgs += "port=" + os.Getenv("pgPort")
-	dbArgs += "user=" + os.Getenv("pgUser")
-	dbArgs += "dbname=" + os.Getenv("pgDbName")
-	dbArgs += "password=" + os.Getenv("pgPassword")
-	return dbArgs
 }
